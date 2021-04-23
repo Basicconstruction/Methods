@@ -34,6 +34,7 @@ void printBlankArray(int* arr, int Length){
     }
     return;
 }
+/*冒泡排序 以及遍历数组输出的函数*/
 int main(){
     int a[3] = {1,2,3};
     bubbleSort1(a,3);
