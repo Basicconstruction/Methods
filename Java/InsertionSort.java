@@ -2,7 +2,16 @@ public class InsertionSort {
     public InsertionSort() {
     }
 
-    public static void insertionSort(int[] arr) {
+    public static void reverseArray(int[] arr) {
+        int trans;
+        for (int i = 0; i < (arr.length - 1) / 2; i++) {
+            trans = arr[i];
+            arr[i] = arr[arr.length - 1 - i];
+            arr[arr.length - 1 - i] = trans;
+        }
+    }
+
+    public static void insertionSort(int[] arr, boolean ascending) {
         int key;
         int j;
         for (int i = 0; i < arr.length; i++) {
@@ -13,6 +22,11 @@ public class InsertionSort {
                 j = j - 1;
             }
             arr[j + 1] = key;
+        }
+        if(ascending){
+            return;
+        }else{
+            reverseArray(arr);
         }
 
     }
@@ -25,7 +39,7 @@ public class InsertionSort {
 
     public static void main(String[] args) {
         int[] a = { 5, 2, 4, 6, 1, 3, 9, 7, 8, 11, 10 };
-        insertionSort(a);
+        insertionSort(a, false);
         printBlankArray(a);
 
     }
