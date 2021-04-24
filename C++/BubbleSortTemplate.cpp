@@ -100,7 +100,7 @@ void printBlankArrayTemplate(T *arr, int length) {
 }
 
 template<typename T>
-void printlnBlankArrayOfRange(T *arr, int preIndex, int endIndex){
+void printBlankArrayOfRange(T *arr, int preIndex, int endIndex){
     for (int i = preIndex; i <= endIndex; i++) {
         cout << arr[i] << " ";
     }

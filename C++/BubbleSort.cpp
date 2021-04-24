@@ -117,7 +117,7 @@ void printBlankArray(int *arr, int length) {
     return;
 }
 
-void printlnBlankArrayOfRange(int *arr, int preIndex, int endIndex){
+void printBlankArrayOfRange(int *arr, int preIndex, int endIndex){
     for (int i = preIndex; i <= endIndex; i++) {
         cout << arr[i] << " ";
     }
