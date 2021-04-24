@@ -147,7 +147,7 @@ void printBlankArrayTemplate(T* arr, int Length){
 int main(){
     double a[10] = {1,2,3,5.1,1,1,5,6.4,8,0.0};
     enhancedBubbleSortTemplate(a,10);
-    printBlankArray(a,10);
+    printBlankArrayTemplate(a,10);
     cout<<"\n";
     int b[6] = {1,3,1,2,4,2};
     enhancedBubbleSortPlus(b,2,5);
