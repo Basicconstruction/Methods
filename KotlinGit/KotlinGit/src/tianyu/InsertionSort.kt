@@ -1,4 +1,4 @@
-package com.Kotlin.tianyu
+package tianyu
 
 //点击顶部工具栏中的【Code】选项；3、在弹出的选项列表中，点击【Reformat Code】
 object InsertionSort {

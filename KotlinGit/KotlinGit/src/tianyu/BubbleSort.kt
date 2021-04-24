@@ -1,4 +1,5 @@
-package com.Kotlin.tianyu
+package tianyu
+
 class BubbleSort {
     /*
     README.txt
