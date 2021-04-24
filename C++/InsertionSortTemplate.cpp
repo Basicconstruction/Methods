@@ -28,7 +28,7 @@ void reverseArrayTemplate(T *list, int length) {
 }
 
 template <typename T>
-void insertionSortTemplate(T* arr, int length, ascending = true){
+void insertionSortTemplate(T* arr, int length, bool ascending = true){
     T key;
     int j;
     for(int i = 0; i < length; i++){
@@ -47,7 +47,7 @@ void insertionSortTemplate(T* arr, int length, ascending = true){
 }
 
 template<typename T>
-void insertionSortOfRange(T* arr, int preIndex, int endIndex ,bool ascending = true){
+void insertionSortOfRangeTemplate(T* arr, int preIndex, int endIndex, bool ascending = true){
     //插入排序
     T key;
     int j;
@@ -75,7 +75,7 @@ void printBlankArrayTemplate(T* arr, int Length){
 }
 int main(){
     int arr[11]{5,2,4,6,1,3,9,7,8,11,10};
-    insertionSortTemplate(arr, 11);
+    insertionSortOfRangeTemplate(arr, 2, 10);
     printBlankArrayTemplate(arr,11);
     return 0;
 }
