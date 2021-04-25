@@ -59,8 +59,8 @@ int main(){
     for(int i = 0; i < n; i++){
         cin>>b[n];
     }
-    toSet(a);
-    toSet(b);
+    toSet(a, m+1);
+    toSet(b, n+1);
     for(int i = 0;i < a[m-1]; i++){
         cout<<a[i]<<" ";
     }
