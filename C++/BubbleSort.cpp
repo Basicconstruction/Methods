@@ -56,7 +56,7 @@ void reverseArrayOfRange(int *list, int preIndex, int endIndex) {
  * @param {int} length
  * @param {bool} ascending
  * @return {*}
- * @brief description(中文)
+ * @brief description(中文): 冒泡排序
  * 该函数接收数组 数组长度 是否升序 作为参数，如果是否升序参数为true，则将对数组进行从小到大的排序
  * 如果是否升序参数为false，则将对数组进行从大到小的排序
  */

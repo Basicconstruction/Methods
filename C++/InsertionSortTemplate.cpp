@@ -27,6 +27,20 @@ void reverseArrayTemplate(T *list, int length) {
     return;
 }
 
+
+/**
+ * @description: Insertion sort
+ * This function receives the array length, whether ascending order as a parameter, 
+ * if the ascending order parameter is true, the array will be sorted from small to large; 
+ * if the ascending parameter is false, the array will be sorted from large to small
+ * @param {T} *list
+ * @param {T} length
+ * @param {bool} ascending
+ * @return {*}
+ * @brief description(中文): 插入排序
+ * 该函数接收数组 数组长度 是否升序 作为参数，如果是否升序参数为true，则将对数组进行从小到大的排序
+ * 如果是否升序参数为false，则将对数组进行从大到小的排序
+ */
 template <typename T>
 void insertionSortTemplate(T* arr, int length, bool ascending = true){
     T key;
@@ -46,6 +60,20 @@ void insertionSortTemplate(T* arr, int length, bool ascending = true){
     return;
 }
 
+/**
+ * @description: Partial insertion sort function
+ * This function receives the array length, whether ascending order as a parameter, 
+ * if the ascending order parameter is true, the array will be sorted from small to large; 
+ * if the ascending parameter is false, the array will be sorted from large to small
+ * @param {int} *list
+ * @param {int} preIndex
+ * @param {int} endIndex
+ * @param {bool} ascending
+ * @return {*}
+ * @brief description(中文): 局部插入排序函数
+ * 该函数接收数组 数组索引1 数组索引2 是否升序 作为参数，如果是否升序参数为true，则将对数组从索引1到索引2进行从小到大的排序
+ * 如果是否升序参数为false，则将对数组从索引1到索引2进行从大到小的排序
+ */
 template<typename T>
 void insertionSortOfRangeTemplate(T* arr, int preIndex, int endIndex, bool ascending = true){
     //插入排序
