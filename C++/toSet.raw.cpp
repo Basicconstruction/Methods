@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-23 11:42:41
- * @LastEditTime: 2021-04-27 23:22:27
+ * @LastEditTime: 2021-04-28 07:03:14
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \undefinedh:\Desktop\git-Methods\Methods\C++\toSet.cpp
@@ -12,6 +12,37 @@
 #include <iostream>
 
 using namespace std;
+
+template<typename T>
+void reverseArrayOfRangeTemplate(T *list, int preIndex, int endIndex) {
+    T trans;
+    for (int i = preIndex; i < (endIndex - preIndex + 1) / 2 + preIndex; i++) {
+        trans = list[i];
+        list[i] = list[endIndex - i + preIndex];
+        list[endIndex - i + preIndex] = trans;
+    }
+    return;
+}
+
+template<typename T>
+void insertionSortOfRangeTemplate(T* arr, int preIndex, int endIndex, bool ascending = true){
+    //插入排序
+    T key;
+    int j;
+    for(int i = 0; i <= endIndex; i++){
+        key = arr[i];
+        j = i -1 ;
+        while(j >= preIndex && arr[j] > key){
+            arr[j+1] = arr[j];
+            j = j - 1 ;
+        }
+        arr[j+1] = key;
+    }
+    if(!ascending){
+        reverseArrayOfRangeTemplate(arr, preIndex, endIndex);
+    }
+    return;
+}
 
 int localMin(int a, int b) {
     if (a < b) {
@@ -165,7 +196,7 @@ void toSet(int *arr, int l);
 //1 2 3 1 5 6 7 8 1 2 
 //1 2 3 5 6 7 8 1 2 1
 */
-void toSetLowSystemVersion(int *arr, int length){
+void toSetLowSystemVersion(int *arr, int length, bool needSort = false, bool ascending = true){
     int M = 0;//M 有效存储位,因为p = 0时，第一轮for循环不会被执行
     int Mv = 0;
     bool sign = true;
@@ -195,6 +226,10 @@ void toSetLowSystemVersion(int *arr, int length){
 
     }
     arr[length-1] = M;
+    cout<<"$M"<<M<<"   ";
+    if(needSort){
+        insertionSortOfRangeTemplate(arr,0,M-1,ascending);
+    }
 //    cout<<Mv;
 //    cout<<"\n";
 }
@@ -205,7 +240,7 @@ int main() {
     // elementsMoveForwardNormal(fg, 19, 4, true);
     // printBlankArrayTemplate(fg, 19);
     int arr[] = {1, 2, 3, 1, 2, 1, 5, 6, 7, 8, 0, 8, 9, 0};
-    toSetLowSystemVersion(arr, 14);
+    toSetLowSystemVersion(arr, 14, true, false);
     printBlankArrayTemplate(arr,14);
 
 

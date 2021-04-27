@@ -5,6 +5,20 @@
 #include <iostream>
 using namespace std;
 
+/**
+ * @description: 
+ * The parameter is list list index 1 list index 2
+ * Processing: Reverse the elements of the list from list index 1 to list index 2
+ * Dependent function: None
+ * @param {T} *list
+ * @param {int} preIndex
+ * @param {int} endIndex
+ * @return {*} void
+ * @brief description(Chinese):
+ * 参数为 列表 列表索引1:int 列表索引2:int
+ * 依赖函数: 无
+ * 处理：反转列表的 自列表索引1 到 列表索引2 的元素
+ */
 template<typename T>
 void reverseArrayOfRangeTemplate(T *list, int preIndex, int endIndex) {
     T trans;
@@ -16,6 +30,18 @@ void reverseArrayOfRangeTemplate(T *list, int preIndex, int endIndex) {
     return;
 }
 
+/**
+ * @description: 
+ * Parameters: list length of list
+ * Processing: Reverse list elements
+ * Dependent function: None
+ * @param {int} length
+ * @return {*}
+ * @brief description(Chinese):
+ * 参数: 模板列表 列表长度:int
+ * 依赖函数: 无
+ * 处理: 反转列表元素
+ */
 template<typename T>
 void reverseArrayTemplate(T *list, int length) {
     T trans;
@@ -32,13 +58,16 @@ void reverseArrayTemplate(T *list, int length) {
  * This function receives the array length, whether ascending order as a parameter, 
  * if the ascending order parameter is true, the array will be sorted from small to large; 
  * if the ascending parameter is false, the array will be sorted from large to small
+ * Dependent function: reverseArrayTemplate(T *list, int length):void
  * @param {T} *list
  * @param {T} length
  * @param {bool} ascending
  * @return {*}
  * @brief description(中文): 插入排序
- * 该函数接收数组 数组长度 是否升序 作为参数，如果是否升序参数为true，则将对数组进行从小到大的排序
- * 如果是否升序参数为false，则将对数组进行从大到小的排序
+ * 参数: 列表 列表长度:int 是否升序:bool
+ * 依赖函数: reverseArrayTemplate(T *list, int length):void
+ * 如果是否升序参数为true，则将对列表进行从小到大的排序
+ * 如果是否升序参数为false，则将对列表进行从大到小的排序
  */
 void insertionSort(int* arr, int length, bool ascending = true){
     //插入排序
@@ -64,14 +93,17 @@ void insertionSort(int* arr, int length, bool ascending = true){
  * This function receives the array length, whether ascending order as a parameter, 
  * if the ascending order parameter is true, the array will be sorted from small to large; 
  * if the ascending parameter is false, the array will be sorted from large to small
+ * Dependent function: reverseArrayTemplate(T *list, int length):void
  * @param {int} *list
  * @param {int} preIndex
  * @param {int} endIndex
  * @param {bool} ascending
  * @return {*}
  * @brief description(中文): 局部插入排序函数
- * 该函数接收数组 数组索引1 数组索引2 是否升序 作为参数，如果是否升序参数为true，则将对数组从索引1到索引2进行从小到大的排序
- * 如果是否升序参数为false，则将对数组从索引1到索引2进行从大到小的排序
+ * 参数: int列表 列表索引1:int 列表索引2:int 是否升序:bool，
+ * 依赖函数: reverseArrayTemplate(T *list, int length):void
+ * 处理:如果是否升序参数为true，则将对列表从索引1到索引2进行从小到大的排序
+ * 如果是否升序参数为false，则将对列表从索引1到索引2进行从大到小的排序
  */
 void insertionSortOfRange(int* arr, int preIndex, int endIndex ,bool ascending = true){
     //插入排序
@@ -92,6 +124,15 @@ void insertionSortOfRange(int* arr, int preIndex, int endIndex ,bool ascending =
     return;
 }
 
+/**
+ * @description: 
+ * @param {int} Length
+ * @return {*}
+ * @brief description(Chinese):
+ * 参数: 模板列表 列表长度
+ * 依赖函数: void
+ * 处理: 输出列表的每一个元素, 并在每一个元素后面追加一个空格
+ */
 template <typename T>
 void printBlankArrayTemplate(T* arr, int Length){
     for(int i = 0; i < Length; i++){
