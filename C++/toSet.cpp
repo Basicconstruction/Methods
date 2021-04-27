@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-23 11:42:41
- * @LastEditTime: 2021-04-27 08:06:51
+ * @LastEditTime: 2021-04-27 23:22:27
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \undefinedh:\Desktop\git-Methods\Methods\C++\toSet.cpp
@@ -104,8 +104,6 @@ void elementsMoveForward(int *arr, int length, int forward = 1, bool pushForward
     if (forward < 1) {
         return;
     }
-    int preIndex;
-    int endIndex;
     int trans;
     localRouter(arr, length, forward, true);
     //debug
@@ -139,7 +137,7 @@ void elementsMoveForward(int *arr, int length, int forward = 1, bool pushForward
 
 void localUnequalLengthRouter(int *arr, int preIndex, int endIndex, int transLength);
 
-void toSetNormal(int *arr, int length, int transLength = 1, bool pushForward = true) {
+void elementsMoveForwardNormal(int *arr, int length, int transLength = 1, bool pushForward = true) {
     if (length / transLength == 2) {
         localRouter(arr, length, transLength);
         return;
@@ -161,11 +159,54 @@ void toSetNormal(int *arr, int length, int transLength = 1, bool pushForward = t
 
 void toSet(int *arr, int l);
 
+//1 2 3 1 2 1 5 6 7 8
+/*i l-2
+//1 2 3 2 1 5 6 7 8 1
+//1 2 3 1 5 6 7 8 1 2 
+//1 2 3 5 6 7 8 1 2 1
+*/
+void toSetLowSystemVersion(int *arr, int length){
+    int M = 0;//M 有效存储位,因为p = 0时，第一轮for循环不会被执行
+    int Mv = 0;
+    bool sign = true;
+    for(int p = 0; p <= length - Mv - 2; p++){
+//        printBlankArrayTemplate(arr, length);
+//        cout<<" "<<p<<"  ";
+        if(p==0){
+            sign = true;
+        }
+        for(int k = 0; k < M && sign; k++){
+            if(arr[k] == arr[p]){
+                elementsMoveOneStep(arr,p,length - 2,true);
+                sign = false;
+            }
+        }
+        if(sign){
+            M = M + 1;
+        }else{
+            p = M - 1;
+            Mv = Mv + 1;
+        }
+//        cout<<"@M: "<<M<<" "<<p<<"  ";
+//        cout<<" #sign "<<sign<<"   ";
+//        printBlankArrayTemplate(arr, length);
+//        cout<<"\n";
+        sign = true;
+
+    }
+    arr[length-1] = M;
+//    cout<<Mv;
+//    cout<<"\n";
+}
+
 int main() {
 
-    int fg[19] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19};
-    toSetNormal(fg, 19, 4, true);
-    printBlankArrayTemplate(fg, 19);
+    // int fg[19] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19};
+    // elementsMoveForwardNormal(fg, 19, 4, true);
+    // printBlankArrayTemplate(fg, 19);
+    int arr[] = {1, 2, 3, 1, 2, 1, 5, 6, 7, 8, 0, 8, 9, 0};
+    toSetLowSystemVersion(arr, 14);
+    printBlankArrayTemplate(arr,14);
 
 
 }
