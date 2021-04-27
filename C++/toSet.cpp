@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-23 11:42:41
- * @LastEditTime: 2021-04-26 18:48:43
+ * @LastEditTime: 2021-04-27 08:06:51
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \undefinedh:\Desktop\git-Methods\Methods\C++\toSet.cpp
@@ -76,6 +76,9 @@ void elementsMoveOneStep(int *arr, int length, bool pushForward = true) {
 
 void elementsMoveOneStep(int *arr, int preIndex, int endIndex, bool pushForward = true) {
     //对数组进行整体移位，移位长度为1，pushForward为true时向前移位，否则向后移位
+    if(preIndex == endIndex){
+        return;
+    }
     if (pushForward) {
         int first;
         first = arr[preIndex];
