@@ -1,0 +1,14 @@
+/**
+ * @description: 
+ * Dependent function: None
+ * warning: If the function is called, the check will be ignored by default
+ * @param {int} *arr
+ * @param {int} length
+ * @param {int} forward
+ * @param {bool} beGetByOtherFunction
+ * @return {*}
+ * 依赖函数: None
+ * @brief description(Chinese): 列表前n位与后n位交换的函数
+ * 处理:交换列表的前n位与后n位
+ * warning: 如果该函数被调用时会默认忽略检查
+ */

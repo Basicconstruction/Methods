@@ -14,9 +14,9 @@ using namespace std;
  * @param {int} preIndex
  * @param {int} endIndex
  * @return {*} void
- * @brief description(Chinese):
- * 参数为 列表 列表索引1:int 列表索引2:int
- * 依赖函数: 无
+ * @brief description(Chinese): 局部列表反转函数
+ * 参数为 模板列表 列表索引1:int 列表索引2:int
+ * 依赖函数: None
  * 处理：反转列表的 自列表索引1 到 列表索引2 的元素
  */
 template<typename T>
@@ -37,9 +37,9 @@ void reverseArrayOfRangeTemplate(T *list, int preIndex, int endIndex) {
  * Dependent function: None
  * @param {int} length
  * @return {*}
- * @brief description(Chinese):
+ * @brief description(Chinese): 列表反转函数
  * 参数: 模板列表 列表长度:int
- * 依赖函数: 无
+ * 依赖函数: None
  * 处理: 反转列表元素
  */
 template<typename T>
@@ -126,11 +126,12 @@ void insertionSortOfRange(int* arr, int preIndex, int endIndex ,bool ascending =
 
 /**
  * @description: 
+ * Processing: output each element of the list, and append a space after each element
  * @param {int} Length
  * @return {*}
- * @brief description(Chinese):
- * 参数: 模板列表 列表长度
- * 依赖函数: void
+ * @brief description(Chinese): 遍历列表输出函数
+ * 参数: 模板列表 列表长度:int
+ * 依赖函数: None
  * 处理: 输出列表的每一个元素, 并在每一个元素后面追加一个空格
  */
 template <typename T>
