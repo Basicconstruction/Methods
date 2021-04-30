@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-30 19:53:58
- * @LastEditTime: 2021-04-30 20:14:09
+ * @LastEditTime: 2021-04-30 20:15:01
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \undefinedh:\Desktop\git-Methods\Methods\C++\SelectionSort.cpp
@@ -12,8 +12,8 @@ using namespace std;
 /**
  * @description: Select sort
  * Worst case running time series: approximately 9 * (n+1)(n-1)/2
- * @param {int} *arr
- * @param {int} length
+ * @param {T} *arr
+ * @param {T} length
  * @return {*} void
  * @brief description(Chinese): 选择排序
  * 最坏情况下的运行时间序列：大约（n + 1）（n-1）/ 2   ** 2 * 9
