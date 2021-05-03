@@ -1,14 +1,16 @@
+import org.jetbrains.annotations.NotNull;
+
 class Data{
     private long d1;
     private boolean b;
     public Data(){
-        d1 = 0;
+        d1 = 0L;
     }
     public Data(long _d){
         d1 = _d;
     }
     public Data(String s, boolean _b){
-        d1 = toLong(s,false);
+        d1 = toLong(s,_b);
         b = _b;
     }
     public Data(String s){
@@ -35,38 +37,51 @@ class Data{
         return output;
     }
 
-    private long toLong(String s,boolean strict) {
-        boolean sign = true;
+    private long toLong(@NotNull String s, boolean strict) {
         long output = 0L;
-        byte b[] = s.getBytes();
-        for(int i = 0; i < b.length;i++){
-            if(!isNumber(b[i])&&strict){
+        byte[] b = s.getBytes();
+        int[] nanFirstZeros = new int[100];
+        int nk = 0;
+        for (byte value : b) {
+            if (!isNumber(value) && strict) {
                 return 0L;
-            }else if(isNumber(b[i])){
-                output += ((int)b[i] - 48) * pow(10,(b.length - i - 1));
-            }else{
-                return output / pow(10, i);
+            } else if (isNumber(value)) {
+//                output += ((int)b[i] - 48) * pow(10,(b.length - i - 1));
+                if ((int) value != 0) {
+                    nanFirstZeros[nk] = (int) value - 48;
+                    nk += 1;
+                }
+            } else {
+                for (int p = 0; p < nk; p++) {
+                    output += nanFirstZeros[p] * pow(10, nk - p - 1);
+                }
+//                return output / pow(10, b.length - i);
+                return output;
             }
+
+        }
+        for(int p = 0; p < nk;p++){
+            output += nanFirstZeros[p] * pow(10,nk-p-1);
         }
         return output;
     }
     public long getValue(){
         return d1;
     }
+    public void setValue(long _d1){
+        d1 = _d1;
+    }
 }
 public class Q8 {
     public static void main(String[] args){
-//        Integer a = 1011;
-//        Integer b = 1011;
-//        int c = a;
-//        Object f = 10.3f;
-//        float g = (float)f;
-//        System.out.println(c);
-//        System.out.println(g);
-        Data a = new Data(100);
-//        System.out.println(a.getValue());
-        Object v = new Data("728qad", false);
-        System.out.println(((Data) v).getValue());
+//        Object v = new Data("728qad", true);
+//        System.out.println(((Data) v).getValue());
+        Data f = new Data("003023034ne",false);
+        Data g = new Data("2334ne",false);
+        System.out.println(f.getValue());
+        System.out.println(g.getValue());
 
     }
+
 }
+

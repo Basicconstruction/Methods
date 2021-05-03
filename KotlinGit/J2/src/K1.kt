@@ -6,5 +6,4 @@ fun main(args: Array<String>){
 //    }
 //    println(c)
 //    Q1.easyPrintln(2);
-    ArrayTester.sum(1,2,1,10,1010,19290)
 }
