@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d496e585-5f5e-41ee-8034-04526b216d26" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../B/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../B/.idea/kotlinc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../B/.idea/libraries/KotlinJavaRuntime.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../B/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../B/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../B/B.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../B/src/Hero.kt" afterDir="false" />
-    </list>
+    <list default="true" id="d496e585-5f5e-41ee-8034-04526b216d26" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -68,6 +60,7 @@
       <updated>1619873720020</updated>
       <workItem from="1619873721265" duration="466000" />
       <workItem from="1619874354794" duration="30000" />
+      <workItem from="1619999232394" duration="19000" />
     </task>
     <servers />
   </component>
