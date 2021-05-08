@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <stdio.h>
 using namespace std;
 string addPre(string s, int a, bool upperAlpha = true){
     char s2;
@@ -37,9 +38,11 @@ string bitsFrom10(int input10, int bits, bool upperAlpha = true){
 }
 int main() {
     int input10;
-    cin>>input10;
+//    cin>>input10;
     int dataN;
-    cin>>dataN;
-    std::cout<<bitsFrom10(input10, dataN);
+//    cin>>dataN;
+    while(scanf("%d%d", &input10,&dataN)!=EOF){
+        std::cout<<bitsFrom10(input10, dataN)<<endl;
+    }
     return 0;
 }
