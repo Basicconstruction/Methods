@@ -1,25 +1,23 @@
 /*
  * @Author: your name
  * @Date: 2021-05-12 09:03:41
- * @LastEditTime: 2021-05-12 09:04:44
+ * @LastEditTime: 2021-05-13 07:32:27
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \undefinedh:\Desktop\git-Methods\Methods\ACM-pretest\acmK.cpp
  */
 #include <iostream>
 using namespace std;
-long factorial(int n, int k = 2){
-    if(n==0){
+long cAB(int B, int A){
+    if(A==0){
         return 1;
     }
     long output = 1;
-    for(int j = n; j >= k;j--){
-        output *= j;
+    for(int i = 1;i<=A;i++){
+        output *= (B-i+1);
+        output /= i;
     }
     return output;
-}
-long cAB(int B, int A){
-    return (factorial(B, B-A+1))/(factorial(A));
 }
 void printWays(int s){
     int howMany2;
@@ -30,7 +28,6 @@ void printWays(int s){
         howMany2 = (s-1)/2;
     }
     for(int i = 0;i<=howMany2;i++){
-//        cout<<"&& "<<i<<"  "<<cAB(s-i,i)<<endl;
         ways += cAB(s-i,i);
     }
     cout<<ways<<endl;
@@ -51,25 +48,3 @@ int main() {
     }
     return 0;
 }
-/* 测试用例
-10
-1
-0
-2
-1
-3
-2
-4
-3
-5
-5
-6
-8
-7
-13
-8
-21
-9
-34
-10
-55*/
