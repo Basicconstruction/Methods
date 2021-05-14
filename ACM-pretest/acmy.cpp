@@ -1,11 +1,3 @@
-/*
- * @Author: your name
- * @Date: 2021-05-14 22:43:12
- * @LastEditTime: 2021-05-14 22:54:12
- * @LastEditors: your name
- * @Description: In User Settings Edit
- * @FilePath: \undefinedh:\Desktop\git-Methods\Methods\ACM-pretest\acmy.cpp
- */
 #include <iostream>
 using namespace std;
 int generate(char c){
