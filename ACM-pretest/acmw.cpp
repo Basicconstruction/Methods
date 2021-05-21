@@ -1,11 +1,3 @@
-/*
- * @Author: your name
- * @Date: 2021-05-14 22:52:56
- * @LastEditTime: 2021-05-14 22:53:34
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \undefinedh:\Desktop\git-Methods\Methods\ACM-pretest\acmw.cpp
- */
 #include <iostream>
 #include <cmath>
 #include <cassert>

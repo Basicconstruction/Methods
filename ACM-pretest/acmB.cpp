@@ -1,11 +1,3 @@
-/*
- * @Author: your name
- * @Date: 2021-05-12 21:57:48
- * @LastEditTime: 2021-05-12 21:59:01
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \undefinedh:\Desktop\git-Methods\Methods\ACM-pretest\acmB.cpp
- */
 #include <iostream>
 #include <string>
 #include <stdio.h>
@@ -46,9 +38,7 @@ string bitsFrom10(int input10, int bits, bool upperAlpha = true){
 }
 int main() {
     int input10;
-//    cin>>input10;
     int dataN;
-//    cin>>dataN;
     while(scanf("%d%d", &input10,&dataN)!=EOF){
         std::cout<<bitsFrom10(input10, dataN)<<endl;
     }

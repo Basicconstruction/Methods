@@ -1,14 +1,5 @@
-/*
- * @Author: your name
- * @Date: 2021-05-12 21:57:50
- * @LastEditTime: 2021-05-12 21:59:31
- * @LastEditors: your name
- * @Description: In User Settings Edit
- * @FilePath: \undefinedh:\Desktop\git-Methods\Methods\ACM-pretest\acmC.cpp
- */
 #include <iostream>
 #include <stdio.h>
-
 using namespace std;
 
 class Pointer {

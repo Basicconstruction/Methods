@@ -1,11 +1,3 @@
-/*
- * @Author: your name
- * @Date: 2021-05-12 09:03:41
- * @LastEditTime: 2021-05-13 07:32:27
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \undefinedh:\Desktop\git-Methods\Methods\ACM-pretest\acmK.cpp
- */
 #include <iostream>
 using namespace std;
 long cAB(int B, int A){

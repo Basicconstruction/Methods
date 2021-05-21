@@ -2,7 +2,6 @@
 #include <string>
 using namespace std;
 string generateWidthLine(int width, bool getWidth = true){
-    //备注:尽管记得有使用字符初始化字符串的方法，但是忘了，就有查阅了一边书
     if(getWidth){
         string generateWidth = string(width, '-');
         return '+' + generateWidth + '+';

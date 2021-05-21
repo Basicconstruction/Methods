@@ -1,11 +1,3 @@
-/*
- * @Author: your name
- * @Date: 2021-05-14 22:43:09
- * @LastEditTime: 2021-05-14 22:47:10
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \undefinedh:\Desktop\git-Methods\Methods\ACM-pretest\acms.cpp
- */
 #include <iostream>
 using namespace std;
 class Pointer{
@@ -53,4 +45,3 @@ int main() {
     }
     return 0;
 }
-// nf 2 -> 1 3 -> 3   4 -> f(3)+f(4)

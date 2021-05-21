@@ -1,11 +1,3 @@
-/*
- * @Author: your name
- * @Date: 2021-05-14 22:43:06
- * @LastEditTime: 2021-05-14 22:45:26
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \undefinedh:\Desktop\git-Methods\Methods\ACM-pretest\acmo.cpp
- */
 #include <iostream>
 #include <stdio.h>
 using namespace std;
