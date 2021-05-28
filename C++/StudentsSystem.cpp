@@ -11,7 +11,7 @@ public:
     int finalTernScore;
     Curriculum* nextCurriculum = nullptr;
     Curriculum(){
-        this->courseId = "1234";
+        this->courseId = "null";
     }
     Curriculum(string _courseId){
         this->courseId = "HeNan University"+_courseId;
@@ -41,9 +41,15 @@ public:
     }
 };
 void showAllCourse(Curriculum* curriculum){
-    cout<<"CurriculumId "<<curriculum->courseId<<" courseName"<<curriculum->courseName;
-    while(curriculum->nextCurriculum!= nullptr){
-        cout<<"CurriculumId "<<curriculum->nextCurriculum->courseId<<" courseName"<<curriculum->nextCurriculum->courseName;
+//    cout<<"CurriculumId: "<<curriculum->courseId<<" courseName: "<<curriculum->courseName<<" "<<&curriculum<<endl;
+    cout<<"CurriculumId: "<<curriculum->courseId<<" courseName: "<<curriculum->courseName<<endl;
+    auto *middleCurriculum = curriculum;
+    while(middleCurriculum->nextCurriculum!= nullptr){
+//        cout<<&(middleCurriculum->nextCurriculum)<<endl;
+        middleCurriculum = middleCurriculum->nextCurriculum;
+//        cout<<"CurriculumId "<<middleCurriculum->courseId<<" courseName: "<<middleCurriculum->courseName
+//        <<" "<<&middleCurriculum<<endl;
+        cout<<"CurriculumId "<<middleCurriculum->courseId<<" courseName: "<<middleCurriculum->courseName<<endl;
     }
     return;
 }
@@ -59,26 +65,26 @@ void addCurriculumInformation(Curriculum* curriculum){
     return;
 }
 void addNewCourse(Curriculum* curriculum){
-    Curriculum* middlePointer;
     auto* newCurriculum = new Curriculum();
-    if(curriculum==nullptr){
-        curriculum = new Curriculum();
-        cout<<curriculum->courseId;
+    if(curriculum->courseId=="null"){
         addCurriculumInformation(curriculum);
 //        addCurriculumInformation(newCurriculum);
 //        curriculum = newCurriculum;
         return;
     }
-    Curriculum* df;
+    Curriculum* middlePointer;
     middlePointer = curriculum;
+//    cout<<&middlePointer<<endl;
     while(middlePointer->nextCurriculum!=nullptr){
-        df = middlePointer->nextCurriculum;//获得最后一个非空课程指针
+        middlePointer = middlePointer->nextCurriculum;//获得最后一个非空课程指针
+//        cout<<&middlePointer<<endl;
     }
     addCurriculumInformation(newCurriculum);
-    df->nextCurriculum = newCurriculum;
+    middlePointer->nextCurriculum = newCurriculum;
 }
 int main() {
-    Curriculum *firstCurriculum = nullptr;
+    auto *firstCurriculum = new Curriculum();
+//    cout<<&firstCurriculum<<endl;
     string instruct;
     while(true){
         cin>>instruct;
@@ -88,7 +94,6 @@ int main() {
             //添加课程信息
             addNewCourse(firstCurriculum);
         }else if(instruct=="12"){
-            cout<<firstCurriculum->courseId;
             showAllCourse(firstCurriculum);
         }
     }
