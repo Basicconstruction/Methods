@@ -118,61 +118,83 @@ void addNewCourse(Curriculum* curriculum) {
     addCurriculumInformation(newCurriculum);
     middlePointer->nextCurriculum = newCurriculum;
 }
-void paintTitle(int x) {
-    write_in_str(string(x, '-'), 0, 0);
-    cout << endl;//x-1在这里很随意，实际上0-118都可以//endl尽管在这里也不是必须的
-    write_in_str(string(int(x / 3), ' '), 2, 0);
+void paintTitle(int x, int& low_p, int& quick_p) {
+    write_in_str(string(x, '-'), 0, 0); quick_p = 0;
+    cout << "\n\n"; quick_p = 2;
+    write_in_str(string(int(x / 3), ' '), quick_p, 0);
     cout << "Welcome to use this students manage System!";
-    cout << endl;//尽管在这里也不是必须的
-    write_in_str(string(x, '-'), 4, 0);
-    cout << endl;
-    write_in_str("here are the instructors", 5, 0);
-    cout << endl;
-    write_in_str(string(x, '-'), 6, 0);
-    cout << endl;
+    cout << "\n\n"; quick_p = 4;
+    write_in_str(string(x, '-'), quick_p, 0);
+    cout << "\n"; quick_p = 5;
+    write_in_str("here are the instructors", quick_p, 0);
+    cout << "\n"; quick_p = 6;
+    write_in_str(string(x, '-'), quick_p, 0);
+    cout << "\n"; quick_p = 7;
 }
-void printInstructions(int col) {
-    write_in_str("1.Curriculum management",col,0);
-    cout << "\n\n";
-    cout << "11-->add a curriculum info ";
-    write_in_str(" ", col + 2, 60);
-    cout<< "12->show all available curriculum" << endl;
-    cout << "13->modify the curriculum information" <<"\n\n";
-    cout << "2-->Students Information Management" << "\n\n";
-    cout << "21->Add student information for a course";
-    write_in_str(" ", col + 7, 60);
+void printInstructions(int& low_p, int& quick_p) {
+    write_in_str("1.Curriculum Management", quick_p,0);
+    cout << "\n\n"; quick_p = 9;
+    cout << "11-->add a curriculum info "; 
+    write_in_str(" ", quick_p, 60);
+    cout<< "12->show all available curriculum" << endl; quick_p = 10;
+    cout << "13->modify the curriculum information" <<"\n\n"; quick_p = 12;
+    cout << "2-->Students Information Management" << "\n\n"; quick_p = 14;
+    cout << "21->Add student information for a course"; 
+    write_in_str(" ", quick_p, 60);
     cout << "22->modify a student's information" << endl;
-    cout << "23->query student information" <<"\n\n";
-    cout << "3-->Students Performance Management"<<"\n\n";
+    cout << "23->query student information" << "\n\n"; quick_p = 16;
+    cout << "3-->Students Performance Management" << "\n\n"; quick_p = 19;
     cout << "31->add a student's grade";
-    write_in_str(" ", col + 12, 60);
+    write_in_str(" ", quick_p, 60);
     cout << "32->modify a student's grade" << endl;
-    cout << "33->show all students' grade";
-    write_in_str(" ", col + 13, 60);
+    cout << "33->show all students' grade"; quick_p = 20;
+    write_in_str(" ", quick_p, 60);
     cout << "34->query a student's grade" << endl;
-    cout << "35->delete or resume a student's grade" << "\n\n";
+    cout << "35->delete or resume a student's grade" << "\n\n"; quick_p = 23;
 }
-void paintControl() {
-    paintTitle(118);
-    printInstructions(7);
+void paintControl(int& low_p, int& quick_p) {
+    paintTitle(118, low_p, quick_p);
+    printInstructions(low_p,quick_p);
+}
+void paintInstruct(int& low_p, int& quick_p, int instructCode) {
+    if (instructCode == 1) {
+        write_in_str("Curriculum Management", low_p, 60);
+        write_in_str("echo>> 1", quick_p + 1, 0);
+
+    }
+    else if (instructCode == 2) {
+        write_in_str("Students Information Management", low_p, 60);
+        write_in_str("echo>> 2", quick_p + 1, 0);
+    }
+    else if(instructCode==3){
+        write_in_str("Students Performance Management", low_p, 60);
+        write_in_str("echo>> 3", quick_p + 1, 0);
+    }
+    else {
+        write_in_str("Invalid instructCode", low_p, 60);
+        write_in_num(instructCode, quick_p + 1, 7);
+    }
+}
+void eraseInputWindow(int& quick_p) {
+    write_in_str(string(300, ' '), quick_p + 1, 0);
 }
 int main() {
     auto* firstCurriculum = new Curriculum();
     //    cout<<&firstCurriculum<<endl;
-    string instruct;
-    paintControl();
+    int instruct;
+    int quick_p = 0;
+    int low_p = 0;
+    paintControl(low_p,quick_p);
+    low_p = quick_p;
+    quick_p = quick_p + 1;
+    bool sign2 = true;
     while (true) {
+        write_in_str("please input the System Code!",quick_p, 0);
+        eraseInputWindow(quick_p);
+        write_in_str("echo>> ", quick_p + 1, 0);
         cin >> instruct;
-        if (instruct == "0") {
-            break;
-        }
-        else if (instruct == "11") {
-            //添加课程信息
-            addNewCourse(firstCurriculum);
-        }
-        else if (instruct == "12") {
-            showAllCourse(firstCurriculum);
-        }
+        paintInstruct(low_p,quick_p,instruct);
+        
     }
     return 0;
 }
