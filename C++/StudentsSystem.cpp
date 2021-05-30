@@ -3,7 +3,10 @@
 #include <windows.h>
 #include <ctime>
 #include <cstdlib>//import system
+#include <vector>
+#include <cassert>
 using namespace std;
+/*
 void write_in_str(string&& text, int x, int y) {
     HANDLE hout;
     COORD coord;
@@ -12,8 +15,18 @@ void write_in_str(string&& text, int x, int y) {
     hout = GetStdHandle(STD_OUTPUT_HANDLE);
     SetConsoleCursorPosition(hout, coord);
     cout << text;
+}*/
+void write_in_str(string text, int x, int y) {
+    HANDLE hout;
+    COORD coord;
+    coord.X = y;
+    coord.Y = x;
+    hout = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleCursorPosition(hout, coord);
+    cout << text;
 }
-void write_in_num(int Number, int x, int y) {
+template <typename T>
+void write_in_num(T Number, int x, int y) {
     HANDLE hout;
     COORD coord;
     coord.X = y;
@@ -21,6 +34,53 @@ void write_in_num(int Number, int x, int y) {
     hout = GetStdHandle(STD_OUTPUT_HANDLE);
     SetConsoleCursorPosition(hout, coord);
     cout << Number;
+}
+void eraseInputWindow(int& quick_p) {
+    for (int i = 1; i < 8; i++) {
+        write_in_str(string(100, ' '), quick_p + i, 0);
+    }
+
+}
+bool isNumChar(char c) {
+    if (static_cast<int>(c) >= static_cast<int>('0') && static_cast<int>(c) <= static_cast<int>('9')) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+int numCharToInt(char c) {
+    assert(c >= '0' && c <= '9');
+    return static_cast<int>(c) - static_cast<int>('0');
+}
+template<typename T>
+char numToChar(T num) {
+    assert(num >= 0 && num <= 9);
+    return static_cast<char>(num + static_cast<int>('0'));
+}
+long long int  strToNum(string str) {
+    long long int out = 0;
+    for (unsigned int i = 0; i < str.length(); i++) {
+        if (isNumChar(str[i])) {
+            out *= 10;
+            out += numCharToInt(str[i]);
+        }
+        else {
+            return -1;
+        }
+    }
+    return out;
+}
+template<typename T>
+string numToString(T num) {
+    assert(num - static_cast<T>(num) == 0);
+    string str = "";
+    num *= 10;
+    for (int i = 0; num >= 10; i++) {
+        num = num / 10;
+        str = numToChar(num%10) + str;
+    }
+    return str;
 }
 class Curriculum {
 public:
@@ -76,22 +136,25 @@ public:
         this->gender = _gender;
     }
 };
-void showAllCourse(Curriculum* curriculum) {
-    //    cout<<"CurriculumId: "<<curriculum->courseId<<" courseName: "<<curriculum->courseName<<" "<<&curriculum<<endl;
+void work_22_showAllCourse(int low_p, int quick_p,Curriculum* curriculum) {
+    eraseInputWindow(quick_p);
+    write_in_str("", quick_p + 1, 0);
     cout << "CurriculumId: " << curriculum->courseId << " courseName: " << curriculum->courseName << endl;
     auto* middleCurriculum = curriculum;
     while (middleCurriculum->nextCurriculum != nullptr) {
-        //        cout<<&(middleCurriculum->nextCurriculum)<<endl;
         middleCurriculum = middleCurriculum->nextCurriculum;
-        //        cout<<"CurriculumId "<<middleCurriculum->courseId<<" courseName: "<<middleCurriculum->courseName
-        //        <<" "<<&middleCurriculum<<endl;
-        cout << "CurriculumId " << middleCurriculum->courseId << " courseName: " << middleCurriculum->courseName << endl;
+        cout << "CurriculumId: " << middleCurriculum->courseId << " courseName: " << middleCurriculum->courseName << endl;
     }
+    cout << "input a char to continue!\n";
+    string i;
+    cin >> i;
     return;
 }
-void addCurriculumInformation(Curriculum* curriculum) {
+void addCurriculumInformation(int& low_p, int& quick_p,Curriculum* curriculum) {
     string courseId;
     string courseName;
+    eraseInputWindow(quick_p);
+    write_in_str("", quick_p + 1, 0);
     cout << "Please input the CourseId\n";
     cin >> courseId;
     curriculum->courseId = courseId;
@@ -100,22 +163,18 @@ void addCurriculumInformation(Curriculum* curriculum) {
     curriculum->courseName = courseName;
     return;
 }
-void addNewCourse(Curriculum* curriculum) {
+void work_21_addNewCourse(int& low_p, int& quick_p,Curriculum* curriculum) {
     auto* newCurriculum = new Curriculum();
     if (curriculum->courseId == "null") {
-        addCurriculumInformation(curriculum);
-        //        addCurriculumInformation(newCurriculum);
-        //        curriculum = newCurriculum;
+        addCurriculumInformation(low_p,quick_p,curriculum);
         return;
     }
     Curriculum* middlePointer;
     middlePointer = curriculum;
-    //    cout<<&middlePointer<<endl;
     while (middlePointer->nextCurriculum != nullptr) {
         middlePointer = middlePointer->nextCurriculum;//获得最后一个非空课程指针
-//        cout<<&middlePointer<<endl;
     }
-    addCurriculumInformation(newCurriculum);
+    addCurriculumInformation(low_p,quick_p,newCurriculum);
     middlePointer->nextCurriculum = newCurriculum;
 }
 void paintTitle(int x, int& low_p, int& quick_p) {
@@ -153,60 +212,116 @@ void printInstructions(int& low_p, int& quick_p) {
     cout << "35->delete or resume a student's grade" << "\n\n"; quick_p = 23;
 }
 void paintControl(int& low_p, int& quick_p) {
-    paintTitle(118, low_p, quick_p);
+    paintTitle(80, low_p, quick_p);
     printInstructions(low_p,quick_p);
 }
-void paintInstruct(int& low_p, int& quick_p, int instructCode) {
-    if (instructCode == 1) {
-        write_in_str("Curriculum Management", low_p, 60);
-        write_in_str("echo>> 1", quick_p + 1, 0);
-
+bool isvalid(int instructCode2, vector<vector<string> > vec) {
+    int index = numCharToInt(numToString(instructCode2)[0])+3;
+    for (unsigned int i = 0; i < vec[index].size(); i++) {
+        if (numToString(instructCode2) == vec[index][i]) {
+            return true;
+        }
     }
-    else if (instructCode == 2) {
-        write_in_str("Students Information Management", low_p, 60);
-        write_in_str("echo>> 2", quick_p + 1, 0);
-    }
-    else if(instructCode==3){
-        write_in_str("Students Performance Management", low_p, 60);
-        write_in_str("echo>> 3", quick_p + 1, 0);
-    }
-    else {
-        write_in_str("Invalid instructCode", low_p, 60);
-        write_in_num(instructCode, quick_p + 1, 7);
+    return false;
+}
+void instructController(int low_p, int quick_p, Curriculum* curriculum, int instructCode2) {
+    switch (instructCode2) {
+    case 11:
+        work_21_addNewCourse(low_p, quick_p, curriculum);
+        break;
+    case 12:
+        work_22_showAllCourse(low_p, quick_p, curriculum);
+        break;
     }
 }
-void eraseInputWindow(int& quick_p) {
-    write_in_str(string(300, ' '), quick_p + 1, 0);
+void paintTackle2(int& low_p, int& quick_p, int instructCode, vector<vector<string> > vec, Curriculum* curriculum) {
+    bool signal0 = true;
+    while (signal0) {
+        eraseInputWindow(quick_p);
+        write_in_str("whick instruct do you want to do?", quick_p, 0);
+        for (unsigned int i = 0; i < vec[instructCode + 3].size(); i++) {
+            cout << " " << vec[instructCode + 3][i];
+        }
+        cout << endl;
+        write_in_str("echo>> ", quick_p + 1, 0);
+        int instructCode2;
+        cin >> instructCode2;
+        if (isvalid(instructCode2, vec)) {
+            write_in_str(string(100, ' '), quick_p, 0);
+            write_in_str("you choose " + numToString(instructCode2)+"  R"+string(30,' '), quick_p, 0);//合法吗？不合法，退回上一步，合法根据输入，修改hang on数据展示块
+        }
+        else {
+            write_in_str(string(100, ' '), quick_p, 0);
+            write_in_str("you choose " + numToString(instructCode2) + " Not valid", quick_p, 60);
+        }
+        //work_21_addNewCourse(low_p,quick_p,curriculum);
+        instructController(low_p, quick_p, curriculum, instructCode2);
+    }
+
+}
+void paintData(int& low_p, int& quick_p, int instructCode, Curriculum* curriculum) {
+    bool signal = true;
+    vector< vector<string> > instructs(7);
+    instructs[0] = vector<string>(1);
+    instructs[1] = vector<string>(3);//1
+    instructs[2] = vector<string>(3);//2
+    instructs[3] = vector<string>(5);//3
+    instructs[4] = vector<string>(3);//1
+    instructs[5] = vector<string>(3);//2
+    instructs[6] = vector<string>(5);//3
+    instructs[0][0] = "0";
+    instructs[1][0] = "add a curriculum info"; instructs[1][1] = "show all available curriculum"; 
+    instructs[1][2] = "modify the curriculum information";
+    instructs[2][0] = "Add student information for a course"; instructs[2][1] = "modify a student's information"; 
+    instructs[2][2] = "query student information";
+    instructs[3][0] = "add a student's grade"; instructs[3][1] = "modify a student's grade";
+    instructs[3][2] = "show all students' grade"; instructs[3][3] = "query a student's grade";
+    instructs[3][4] = "delete or resume a student's grade";
+    instructs[4][0] = "11"; instructs[4][1] = "12"; instructs[4][2] = "13";
+    instructs[5][0] = "21"; instructs[5][1] = "22"; instructs[5][2] = "23";
+    instructs[6][0] = "31"; instructs[6][1] = "32"; instructs[6][2] = "33"; instructs[6][3] = "34"; instructs[6][4] = "35";
+    paintTackle2(low_p, quick_p, instructCode, instructs,curriculum);
+}
+void paintInstruct(int& low_p, int& quick_p, int instructCode, Curriculum* curriculum) {
+    if (instructCode == 1) {
+        write_in_str("Curriculum Management              ", low_p, 60);
+        write_in_str("echo>> 1", quick_p + 1, 0);
+        paintData(low_p, quick_p, instructCode, curriculum);
+    }
+    else if (instructCode == 2) {
+        write_in_str("Students Information Management   ", low_p, 60);
+        write_in_str("echo>> 2", quick_p + 1, 0);
+        paintData(low_p, quick_p, instructCode, curriculum);
+    }
+    else if(instructCode==3){
+        write_in_str("Students Performance Management   ", low_p, 60);
+        write_in_str("echo>> 3", quick_p + 1, 0);
+        paintData(low_p, quick_p, instructCode, curriculum);
+    }
+    else {
+        write_in_str("Invalid instructCode              ", low_p, 60);
+        write_in_num(instructCode, quick_p + 1, 7);
+    }
+    
 }
 int main() {
     auto* firstCurriculum = new Curriculum();
-    //    cout<<&firstCurriculum<<endl;
     int instruct;
     int quick_p = 0;
     int low_p = 0;
     paintControl(low_p,quick_p);
     low_p = quick_p;
-    quick_p = quick_p + 1;
+    quick_p = quick_p + 1;   //low_p = 23;  quick_p = 24;
     bool sign2 = true;
     while (true) {
+        write_in_str(string(100, ' '), quick_p, 0);
         write_in_str("please input the System Code!",quick_p, 0);
         eraseInputWindow(quick_p);
         write_in_str("echo>> ", quick_p + 1, 0);
         cin >> instruct;
-        paintInstruct(low_p,quick_p,instruct);
+        paintInstruct(low_p,quick_p,instruct,firstCurriculum);
         
     }
     return 0;
+    
 }
-/* 以下用于命令行风格设计
-bool outBreak;
-int data = 0;
-string s;
-while(true){
-    cout<<"shell>>";
-    cin>>s;
-    data++;
-    if(data>=50){
-        break;
-    }
-}*/
