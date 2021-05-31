@@ -1,0 +1,44 @@
+﻿Html5 App开发
+Dreamweaver从入门到精通
+精通css—高级web标准解决方案
+Html5权威指南
+javascript高级程序设计
+java编程思想—影印版
+编译原理
+java从入门到精通
+C++编程思想
+Rust程序设计
+C prime plus
+C++程序设计
+C#入门经典--2手
+python网络爬虫权威指南
+kotlin编程权威指南
+effective modern C++
+计算机图形学原理及实践
+算法导论
+android高级编程
+kotlin开发进阶
+计算机网络
+python+kivy（app开发）从入门到精通
+julia语言编程入门
+julia高性能计算
+julia数据科学应用
+julia机器学习核心编程
+rust权威指南
+python程序设计
+python核心编程
+pyqt快速开发实战
+python数据分析 适用于pandas库
+matlab/simulink系统仿真
+python树莓派编程
+Go语言编程
+微型计算机原理与汇编语言程序设计 （no value）
+计算机网络—自顶向下方法
+经济学--2手
+
+on the way:
+汇编语言：基于x86处理器
+离散数学及其应用（本科教学版）
+组合数学
+数据库系统：设计，实现与管理
+深入浅出Node.js
