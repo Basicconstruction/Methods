@@ -1,7 +1,6 @@
 #include <iostream>
 #include <vector>
 using namespace std;
-//奇数幻方生成
 string convertNumToString(long long int x){
     // transfer int number to string
     string s;
@@ -68,7 +67,6 @@ void checkxd2nplus1(vector< vector<int> >& xd2nplus1){
     cout<<"All Ok!"<<endl;
 }
 void swapRow(vector<vector<int> > & xd2nplus1, int row1, int row2){
-    //交换幻方的两列(row)
     int trans;
     for(auto & i : xd2nplus1){
         trans = i[row1];
@@ -77,7 +75,6 @@ void swapRow(vector<vector<int> > & xd2nplus1, int row1, int row2){
     }
 }
 void swapEachRow(vector<vector<int> > & xd2nplus1){
-    //根据生成规则，交换
     const unsigned int squareLen = xd2nplus1.size();
     vector<vector<int> > copySEMI((squareLen-1)/2);
     for(auto & i : copySEMI){
@@ -87,12 +84,15 @@ void swapEachRow(vector<vector<int> > & xd2nplus1){
         for(int k = 0; k < squareLen;k++){
             copySEMI[j][k] = xd2nplus1[k][copySEMI.size()+1+j];
         }//finish copy
+//        cout<<"jjj"<<copySEMI.size()+1+j<<endl;
     }
     for(int l = 1;l < 1+copySEMI.size();l++){
         swapRow(xd2nplus1, l, copySEMI.size()+l);
+//        cout<<"PP! "<<l<<" "<<copySEMI.size()+l<<endl;
     }
     swapRow(xd2nplus1,0,copySEMI.size());
     for(int i = 0;i < copySEMI.size();i++){
+//        cout<<"pp2 "<<i<<endl;
         for(int k = 0;k < xd2nplus1.size();k++){
             xd2nplus1[k][i] = copySEMI[i][k];
         }
@@ -101,14 +101,12 @@ void swapEachRow(vector<vector<int> > & xd2nplus1){
 
 }
 bool reachEnd(vector<vector<int> >& xd2nplus1,int col,int row){
-    //判断 填入区域是否到达终点
     if(col==0||row==xd2nplus1.size()-1){
         return true;
     }
     return false;
 }
 bool isValid(vector<vector<int> > & xd2nplus1,int col,int row){
-    //判断填入值是否合法
     const unsigned int validate = xd2nplus1.size();
     if(col>=0&&col<validate&&row>=0&&row<validate){
         return true;
@@ -116,7 +114,6 @@ bool isValid(vector<vector<int> > & xd2nplus1,int col,int row){
     return false;
 }
 int getNextInt(int num, int n){
-    //获得下一个合法数字
     for(int i = 0;i<n;i++){
         if(num>=i * n+1&&num<=(i+1)*n){
             ++num;
@@ -128,7 +125,19 @@ int getNextInt(int num, int n){
     }
     return -1;
 }
+void test(){
+    int n = 5;
+    int m = 3;
+    while(true){
+        cin>>m;
+        cout<<getNextInt(m,n)<<endl;
+        if(m==0){
+            break;
+        }
+    }
+}
 int main() {
+//    test();
     int n;
     cout<<"n==?\nplease input n!\n";
     cin>>n;
@@ -148,15 +157,26 @@ int main() {
         if(isValid(xd2nplus1,col,row)){
             xd2nplus1[col][row] = low;
         }
+//        cout<<string(10,'-')<<endl;
+//        cout<<"**i == "<<i<<endl;
+//        cout<<"col "<<col<<" row "<<row<<"low"<<low<<endl;
         while(!reachEnd(xd2nplus1,col,row)){
             col --;
             row ++;
             low = getNextInt(low,xd2nplus1.size());
             if(isValid(xd2nplus1,col,row)){
                 xd2nplus1[col][row] = low;
+//                cout<<"low == "<<low<<endl;
             }
+//            if(row<=n-1&&col<=n-1){
+//                xd2nplus1[col][row] = low;
+//                cout<<"low == "<<low<<endl;
+//            }
+//            cout<<"**i == "<<i<<endl;
+//            cout<<"col "<<col<<" row "<<row<<"low "<<low<<endl;
         }
     }
+//    randAllItems(xd2nplus1);
     swapEachRow(xd2nplus1);
     checkxd2nplus1(xd2nplus1);
     randAllItems(xd2nplus1);
