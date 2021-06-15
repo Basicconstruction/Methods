@@ -1,3 +1,4 @@
+#Pkg.add("ThinkJulia") rm(joinpath(homedir(), ".julia", "registries"); recursive=true)
 #遍历数组
 x = [1,2,3]
 for ele in x
