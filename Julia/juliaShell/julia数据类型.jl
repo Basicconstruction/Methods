@@ -19,3 +19,11 @@ round() 四舍五入
 
 
 =#
+function printall(a)
+    sum = 0
+    for i in a
+        print(i)
+        sum += i
+    end  
+end
+printall(1:10)
