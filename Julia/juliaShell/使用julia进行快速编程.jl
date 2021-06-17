@@ -47,5 +47,68 @@ julia> setprecision(10)do
 任意精度的计算
 BigFloat
 BigInt
+println(BigInt(10)^10000)
+
+执行按位运算
+~x 按位取反
+x & y 按位与
+x | y 按位或
+按位异或
+x >>> y 逻辑或算术右移
+x >> y 算术右移
+x <<< 逻辑或算术左移
+
+数组和矩阵
+rand_array = rand(1:100,6)
+println(rand_array)
+在1--100内随机选择6 个值创建一个数组
+
+julia 的列表解析式
+[x[i] = 3 ^ i for i = 1:10]
+10-element Vector{Int64}:
+     3
+     9
+    27
+    81
+   243
+   729
+  2187
+  6561
+ 19683
+ 59049
+
+创建自定义大小数组并填充,在julia中Array和Vector的区别并不大
+julia> x = Array{Int64}(undef,10)
+10-element Vector{Int64}:
+         1
+ 447021312
+         1
+ 447021392
+         1
+ 447021472
+         1
+ 447021552
+         1
+ 447021632
+
+julia> fill!(x,10)
+10-element Vector{Int64}:
+ 10
+ 10
+ 10
+ 10
+ 10
+ 10
+ 10
+ 10
+ 10
+ 10
+
+数组填充，  fill!(x,10)                    fill(x,10)不同以往
+x表示数组
+
 
 =#
+pow2 = Array(Int64,100)
+pow[1] = 100
+println(pow2)

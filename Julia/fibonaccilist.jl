@@ -1,13 +1,13 @@
-known = Dict(0=>0,1=>1)
+known = Dict(0=>BigInt(0),1=>BigInt(1))
 function fibonacci(n::BigInt)::BigInt
     if n ∈ keys(known)
         return known[n]
     end
     res::BigInt = fibonacci(n-1) + fibonacci(n-2)
-    known[n] = res
+    known[n] = BigInt(res)
     res
 end
-y = collect(0:1)
+y = collect(BigInt(0):BigInt(1))
 println(y)
 function fibonacci2(n::BigInt)::BigInt
     if n < length(y) && n != 0
@@ -21,5 +21,5 @@ function fibonacci2(n::BigInt)::BigInt
     push!(y,c)
     c
 end
-println(fibonacci(BigInt(90)))
-println(fibonacci2(BigInt(100)))
+println(fibonacci(BigInt(9000)))
+println(fibonacci2(BigInt(10000)))

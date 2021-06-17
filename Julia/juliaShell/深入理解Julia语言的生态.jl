@@ -70,6 +70,7 @@ Status `C:\Users\hay boy\.julia\environments\v1.5\Project.toml`
 
 Pkg.add("Genie.jl")  用于下载包，如果是公有包
 
+按]键进入Pkg模式 即可 add Calculus   rm Calculus  up Calculus
 
 Pkg.clone(url) 用于安装未注册包
 
