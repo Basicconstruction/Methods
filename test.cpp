@@ -33,3 +33,4 @@ int main() {
 
     cout<<sumTime1<<"ms"<<endl<<sumTime2<<"ms";
 }
+https://ferrolho.github.io/blog/2019-01-26/how-to-install-julia-on-ubuntu
