@@ -11,9 +11,9 @@ string convertNumToString(long long int x) {
 }
 long long int convertStringToLong(string s){
     long long int x = 0;
-    for(int i=0; i<s.length();i++){
+    for(unsigned int i=0; i<s.length();i++){
         x *= 10;
-        x += s[i];
+        x += static_cast<int>(s[i]-48);
     }
     return x;
 }

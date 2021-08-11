@@ -8,7 +8,7 @@ function fibonacci(n::BigInt)::BigInt
     res
 end
 y = collect(BigInt(0):BigInt(1))
-println(y)
+# println(y)
 function fibonacci2(n::BigInt)::BigInt
     if n < length(y) && n != 0
         return y[n+1]
@@ -21,5 +21,5 @@ function fibonacci2(n::BigInt)::BigInt
     push!(y,c)
     c
 end
-println(fibonacci(BigInt(9000)))
-println(fibonacci2(BigInt(10000)))
+println(fibonacci(BigInt(30001)))
+# println(fibonacci2(BigInt(10000)))
